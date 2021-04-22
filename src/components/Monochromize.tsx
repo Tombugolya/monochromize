@@ -1,13 +1,13 @@
 import React from "react";
 import "../css/main.css";
-import Form from "./Form";
+import FormGroup from "./Form/FormGroup";
 import Title from "./Title";
 
 function Monochromize() {
   return (
     <div>
       <Title />
-      <Form />
+      <FormGroup />
     </div>
   );
 }
