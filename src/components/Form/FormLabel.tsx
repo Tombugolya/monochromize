@@ -1,17 +1,19 @@
-import SU from "../../utils/StringUtils";
-import { Form } from "react-bootstrap";
+import SU from '../../utils/StringUtils';
+import { Form } from 'react-bootstrap';
+import { FC } from 'react';
 
-type FormLabelProps = {
-  key: string;
+type TFormLabel = FC<{
+  key: number;
   name: string;
-};
+}>;
 
-export default function FormLabel({ name }: FormLabelProps) {
+export const FormLabel: TFormLabel = ({ name }) => {
   return (
     <Form.Group>
       <Form.Label>{SU.capitalize(name)}</Form.Label>
       <Form.Control
         required
+        name={name}
         type="text"
         placeholder={`Enter ${SU.capitalize(name)}`}
       />
@@ -20,4 +22,6 @@ export default function FormLabel({ name }: FormLabelProps) {
       </Form.Control.Feedback>
     </Form.Group>
   );
-}
+};
+
+export default FormLabel;

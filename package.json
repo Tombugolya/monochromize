@@ -16,6 +16,9 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
+  "prettier": {
+    "singleQuote": true
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
