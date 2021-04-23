@@ -2,32 +2,24 @@ form, #form, #carousel {
   width: 80%;
   margin: 0 auto;
 }
-
 #carousel-slides {
-  width: 50%;
+  width: 60%;
   margin: 2% auto;
-  border: 1px solid black;
 }
-
 h1 {
   margin: 5%;
 }
-
 form, #form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center
 }
-
 #album-img {
   filter:  grayscale(100%);
 }
 .form-group {
   width: 60%;
-}
-.carousel-caption {
-  background-color: rgba(50, 150, 200, 0.6);
 }
 .white {
   color: white;

@@ -1,8 +1,8 @@
-import FormLabel from './FormLabel';
-import { Form, Button } from 'react-bootstrap';
 import { FC, FormEvent, useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import FormLabel from './FormLabel';
 
-type TFormGroup = FC<{ fields?: string[] }>;
+type TFormGroup = FC<{ fields: string[] }>;
 
 export const FormGroup: TFormGroup = ({ fields }) => {
   const [validated, setValidated] = useState(false);
@@ -19,15 +19,17 @@ export const FormGroup: TFormGroup = ({ fields }) => {
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      {fields?.map((val: string, index) => (
-        <FormLabel name={val} key={index} />
-      ))}
-      <Button type="submit">Submit form</Button>
-    </Form>
+    <div id="form">
+      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        {fields?.map((val: string, index) => (
+          <FormLabel name={val} key={index} />
+        ))}
+        <Button type="submit" variant="dark">
+          Monochromize
+        </Button>
+      </Form>
+    </div>
   );
 };
-
-FormGroup.defaultProps = { fields: ['album', 'artist'] };
 
 export default FormGroup;
