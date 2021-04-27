@@ -21,7 +21,7 @@ export const FormGroup: TFormGroup = ({ fields }) => {
   return (
     <div id="form">
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        {fields?.map((val: string, index) => (
+        {fields.map((val: string, index) => (
           <FormLabel name={val} key={index} />
         ))}
         <Button type="submit" variant="dark">

@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
+import { DataContext } from '../contexts/DataContext';
 import FormGroup from './Form/FormGroup';
 import Title from './Title';
 import Gallery from './Gallery/Gallery';
@@ -9,15 +10,13 @@ interface Properties {
 }
 type TMonochromize = FC<Properties>;
 
-const Monochromize: TMonochromize = ({
-  fields = ['artist', 'album'],
-  imageSource = 'https://lunawood.com/wp-content/uploads/2018/02/placeholder-image.png',
-}) => {
+const Monochromize: TMonochromize = ({ fields = ['artist', 'album'] }) => {
+  const { data } = useContext(DataContext);
   return (
     <div>
       <Title />
       <FormGroup fields={fields} />
-      <Gallery imageSource={imageSource} />
+      <Gallery imageSource={data.imageSource} />
     </div>
   );
 };

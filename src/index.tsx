@@ -5,12 +5,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Monochromize from './components/Monochromize';
 import reportWebVitals from './tests/reportWebVitals';
+import DataContextProvider from './contexts/DataContext';
 
 function App() {
   return (
     <React.StrictMode>
       <Router>
-        <Monochromize />
+        <DataContextProvider>
+          <Monochromize />
+        </DataContextProvider>
       </Router>
     </React.StrictMode>
   );
