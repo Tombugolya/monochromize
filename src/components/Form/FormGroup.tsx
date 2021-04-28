@@ -1,13 +1,14 @@
-import { FC, FormEvent, useState } from 'react';
+import { FC, FormEvent, useContext, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import FormLabel from './FormLabel';
 import FetchUtils from '../../utils/FetchUtils';
+import { DataContext } from '../../contexts/DataContext';
 
-type TFormGroup = FC<{ fields: string[] }>;
+type TFormGroup = FC<{ fields?: string[] }>;
 
-export const FormGroup: TFormGroup = ({ fields }) => {
+export const FormGroup: TFormGroup = ({ fields = ['artist', 'album'] }) => {
   const [validated, setValidated] = useState(false);
-
+  const { setData } = useContext(DataContext);
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     event.preventDefault();
@@ -16,7 +17,13 @@ export const FormGroup: TFormGroup = ({ fields }) => {
       const data = await FetchUtils.invokeLambda(
         Array.from(formData.entries(), (array) => array[1])
       );
-      console.log(data);
+      if (data) {
+        setData({
+          imageSource: data.url,
+          albumName: data.info,
+          albumDescription: data.description,
+        });
+      }
     }
     setValidated(true);
   };

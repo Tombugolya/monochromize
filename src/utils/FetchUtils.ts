@@ -13,6 +13,6 @@ export default class FetchUtils {
     } catch (e) {
       console.log(e);
     }
-    return response ? response.json() : null;
+    return response ? JSON.parse(await response.json()) : null;
   }
 }
