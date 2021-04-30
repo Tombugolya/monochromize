@@ -30,7 +30,6 @@ const darkTheme: ThemeProps = {
 
 export const ThemeContextProvider: TThemeContextProvider = ({ children }) => {
   const [theme, setTheme] = useState<ThemeState>('light');
-  console.log(theme);
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <ThemeContext.Provider value={{ theme, setTheme }}>
