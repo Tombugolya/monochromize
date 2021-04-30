@@ -6,12 +6,14 @@ import { Form, Button } from 'react-bootstrap';
 import FormLabel from './FormLabel';
 import FetchUtils from '../../utils/FetchUtils';
 import { DataContext } from '../../contexts/DataContext';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 type TFormGroup = FC<{ fields?: string[] }>;
 
 export const FormGroup: TFormGroup = ({ fields = ['artist', 'album'] }) => {
   const [validated, setValidated] = useState(false);
   const { setData } = useContext(DataContext);
+  const { theme } = useContext(ThemeContext);
   const formStyle = css({
     display: 'flex',
     flexDirection: 'column',
@@ -51,7 +53,7 @@ export const FormGroup: TFormGroup = ({ fields = ['artist', 'album'] }) => {
         {fields.map((val: string, index) => (
           <FormLabel name={val} key={index} />
         ))}
-        <Button type="submit" variant="dark">
+        <Button type="submit" variant={theme === 'light' ? 'dark' : 'light'}>
           Monochromize
         </Button>
       </Form>

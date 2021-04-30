@@ -1,7 +1,11 @@
+/** @jsxImportSource @emotion/react */
+// eslint-disable-next-line
+import { jsx } from '@emotion/react';
 import { FC } from 'react';
 import FormGroup from './Form/FormGroup';
-import Title from './Title';
+import TopBar from './TopBar/TopBar';
 import Content from './Content/Content';
+import GlobalStyles from './GlobalStyles';
 
 interface Properties {
   imageSource?: string;
@@ -12,7 +16,8 @@ type TMonochromize = FC<Properties>;
 const Monochromize: TMonochromize = () => {
   return (
     <div>
-      <Title />
+      <GlobalStyles />
+      <TopBar />
       <FormGroup />
       <Content />
     </div>
