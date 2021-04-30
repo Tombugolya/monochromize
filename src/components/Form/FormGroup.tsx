@@ -1,3 +1,6 @@
+/** @jsxImportSource @emotion/react */
+// eslint-disable-next-line
+import { jsx, css } from '@emotion/react';
 import { FC, FormEvent, useContext, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import FormLabel from './FormLabel';
@@ -9,6 +12,15 @@ type TFormGroup = FC<{ fields?: string[] }>;
 export const FormGroup: TFormGroup = ({ fields = ['artist', 'album'] }) => {
   const [validated, setValidated] = useState(false);
   const { setData } = useContext(DataContext);
+  const formStyle = css({
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '80%',
+    margin: '0 auto',
+  });
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     event.preventDefault();
@@ -30,7 +42,12 @@ export const FormGroup: TFormGroup = ({ fields = ['artist', 'album'] }) => {
 
   return (
     <div id="form">
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <Form
+        css={formStyle}
+        noValidate
+        validated={validated}
+        onSubmit={handleSubmit}
+      >
         {fields.map((val: string, index) => (
           <FormLabel name={val} key={index} />
         ))}

@@ -1,3 +1,6 @@
+/** @jsxImportSource @emotion/react */
+// eslint-disable-next-line
+import { jsx } from '@emotion/react';
 import SU from '../../utils/StringUtils';
 import { Form } from 'react-bootstrap';
 import { FC } from 'react';
@@ -9,7 +12,7 @@ type TFormLabel = FC<{
 
 export const FormLabel: TFormLabel = ({ name }) => {
   return (
-    <Form.Group>
+    <Form.Group css={{ width: '60%' }}>
       <Form.Label>{SU.capitalize(name)}</Form.Label>
       <Form.Control
         required
